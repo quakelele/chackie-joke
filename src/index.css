@@ -1,15 +1,11 @@
 @font-face {
-   font-family: 'Hitch Hike';
-   src: local('Hitch Hike'), local('HitchHike'),
-      url('../public/fonts/Hitchhike.woff2') format('woff2'),
-      url('../public/fonts/Hitchhike.woff') format('woff'),
-      url('../public/fonts/Hitchhike.ttf') format('truetype');
-   font-weight: 400;
-   font-style: normal;
+  font-family: 'Hitch Hike';
+  src: local('Hitch Hike'), local('HitchHike'), url('../public/fonts/Hitchhike.woff2') format('woff2'),
+    url('../public/fonts/Hitchhike.woff') format('woff'), url('../public/fonts/Hitchhike.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
-:root {
-}
-
-body {
+html {
+  scrollbar-gutter: stable;
 }

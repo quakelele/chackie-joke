@@ -25,18 +25,23 @@ const Container = styled.div`
     }
   }
 `
+const ButtonBlock = styled.div`
+  display: flex;
+  gap: 10px;
+`
 const List = styled.li`
   align-items: center;
   display: flex;
   justify-content: space-between;
   width: 450px;
- background-color: #e0e0e0;
+  background-color: #e0e0e0;
   border: 0 solid grey;
   padding: 10px;
   border-radius: 15px;
   list-style-type: none;
   transition: 0.3s all ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
   &:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   }
@@ -64,8 +69,9 @@ const List = styled.li`
 type Props = {
   favorites: JokeType[]
   setFavorites: (arg: JokeType[]) => void
+  addAndDeleteHandler: (arg: void) => void
 }
-export const Favorites = ({ favorites, setFavorites }: Props) => {
+export const Favorites = ({ favorites, setFavorites, addAndDeleteHandler }: Props) => {
   const deleteFromFavorites = (jokeId: string | undefined) => {
     const deleteById = favorites.filter(item => item.id !== jokeId)
     setFavorites(deleteById)
@@ -73,7 +79,10 @@ export const Favorites = ({ favorites, setFavorites }: Props) => {
 
   return (
     <Container>
-      <button onClick={()=> setFavorites([])}>clear all</button>
+      <ButtonBlock>
+        <button onClick={() => setFavorites([])}>clear all</button>
+        <button onClick={() => addAndDeleteHandler()}>add & remove</button>
+      </ButtonBlock>
       {favorites.map(item => (
         <List key={item.id}>
           <img src={chucky} width={50} height={50} alt="" />
