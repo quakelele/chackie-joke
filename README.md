@@ -17,5 +17,6 @@
 - TypeScript
 - Styled Components
 - Библиотеки для управления состоянием (redux, effector, mobx и т.п)
--
-- ![chucknorris_logo_coloured_small@2x](https://github.com/quakelele/chackie-joke/assets/154896596/800233bd-1cd2-4941-bd1f-49d3cf4f0532)
+- ![Без имени](https://github.com/quakelele/chackie-joke/assets/154896596/dbb84126-242e-4a86-ab9b-86103784f876)
+
+
