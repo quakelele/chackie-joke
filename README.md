@@ -1,30 +1,28 @@
-# React + TypeScript + Vite
+Тестовое React. Redux. TS. Styled components.
+Чак Норис челендж
+Это челендж который тебе предстоит пройти если ты хочешь вступить в наши ряды.
+Идея простая, но реализация отнюдь.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Есть Апи которое умеет получать шутки Чака Нориса - https://api.chucknorris.io/
 
-Currently, two official plugins are available:
+Нужно сделать интерфейс который бы по нажатию кнопки получал одну шутку и отображал ее на экране
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Нужно создать кнопку которая каждые 3 секунды показывает новую шутку и если нажать на нее еще раз показ шуток должен остановиться.
 
-## Expanding the ESLint configuration
+Также нужно создать кнопку которая добавляет шутку в лист любимых шуток и если нажать еще раз она ее удалит из листа и при перезагрузке страницы они должны сохраняться. (используй localStorage)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Нужно создать кнопку которая будет переходить в лист любимых шуток и оттуда можно удалить любую шутку
 
-- Configure the top-level `parserOptions` property like this:
+Любимых шуток может отображаться максимум 10, после при добавление новой шутки самая первая удаляется, а новая добавляется в конец листа.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Так же нужно создать кнопку которая очищает лист любимых шуток.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Удели вниманию блокам в листе любимых шуток https://www.figma.com/file/nYKrkNVMT4EdMIRV1idWGR/Chuck-Norris-WareFrame?node-id=0%3A1
+
+Обязательные технические требования:
+
+TypeScript
+
+Styled Components
+
+Библиотека для управления состоянием (redux, effector, mobx и т.п)
