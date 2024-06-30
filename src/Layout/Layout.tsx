@@ -29,14 +29,14 @@ const shakeAnimation = keyframes`
   100% {
     transform: translate(0, 0) rotate(0deg);
   }
-`;
+`
 const Image = styled.img`
-  width: 300px; 
-  height: 200px; 
-  transition: transform 0.3s ease; 
+  width: 300px;
+  height: 200px;
+  transition: transform 0.3s ease;
 
   &:hover {
-    animation: ${shakeAnimation} 0.5s ease-in-out infinite; 
+    animation: ${shakeAnimation} 0.5s ease-in-out infinite;
   }
 `
 const Inner = styled.div`
@@ -56,7 +56,6 @@ const Page = styled.h3`
   margin: 0;
   padding: 11px;
   line-height: 1;
-
 `
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -64,16 +63,18 @@ const StyledLink = styled(Link)`
   outline: none;
   color: rgb(71, 71, 71);
   font-family: 'Hitch Hike';
-  transition:  0.3s all ease;
+  transition: 0.3s all ease;
 
   h3:hover {
     transform: scale(1.1) rotate(2deg);
-    transition:  0.5s all ease;
+    transition: 0.5s all ease;
   }
 `
 
 export const Layout = () => {
   const [fetchJoke] = useLazyGetRandomJokeQuery()
+  const [intervalId, setIntervalId] = useState<number>()
+  const [isRunning, setIsRunning] = useState(false)
   const { data: joke } = useGetRandomJokeQuery()
   const Local: JokeType[] = JSON.parse(localStorage.getItem('favorites') || '[]')
   const [favorites, setFavorites] = useState<JokeType[]>(Local)
@@ -91,6 +92,27 @@ export const Layout = () => {
       }
       setFavorites(deleteFromFavorite)
     }
+  }
+
+  const startInterval = () => {
+    const ID = setInterval(() => {
+      fetchJoke()
+    }, 3000)
+    setIsRunning(true)
+    setIntervalId(ID)
+  }
+
+  const stopInterval = () => {
+    clearInterval(intervalId)
+    setIsRunning(false)
+  }
+
+  const intervalHandler = () => {
+    if (isRunning) {
+      stopInterval()
+      return
+    }
+    startInterval()
   }
 
   const addToFavorites = () => {
@@ -117,7 +139,7 @@ export const Layout = () => {
       </Inner>
       <ButtonBlock>
         <Button title={'random'} addButton={fetchJoke} />
-        <Button title={'add with delay'} addButton={() => console.log('add with delay 3 sec')} />
+        <Button title={'add with delay'} addButton={intervalHandler} />
         <Button title={'add to favorites'} addButton={addToFavorites} />
       </ButtonBlock>
       <Routes>
