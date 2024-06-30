@@ -2,6 +2,7 @@ import { Favorites } from '../Pages/Favorites'
 import { Home } from '../Pages/Home'
 import { useLazyGetRandomJokeQuery, useGetRandomJokeQuery } from '../api'
 import styled, { keyframes } from 'styled-components'
+import './Layout.css'
 import { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { Button } from '@components/Button'
@@ -138,9 +139,9 @@ export const Layout = () => {
         </StyledLink>
       </Inner>
       <ButtonBlock>
-        <Button title={'random'} addButton={fetchJoke} />
-        <Button title={'add with delay'} addButton={intervalHandler} />
-        <Button title={'add to favorites'} addButton={addToFavorites} />
+        <Button title={'Random joke'} addButton={fetchJoke} />
+        <Button isRunning={isRunning} title={'Joke with delay'} addButton={intervalHandler} />
+        <Button title={'Add to favorites'} addButton={addToFavorites} />
       </ButtonBlock>
       <Routes>
         <Route
