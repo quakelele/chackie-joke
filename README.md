@@ -1,4 +1,4 @@
-# Тестовое  React.  Redux.  TS.  Styled components.  
+# Тестовое на React.  Redux.  TS.  Styled components.  
 # Чак Норис челендж
 
 ## Это челендж который тебе предстоит пройти если ты хочешь вступить в наши ряды.
@@ -13,10 +13,9 @@
 - Любимых шуток может отображаться максимум 10, после при добавление новой шутки самая первая удаляется, а новая добавляется в конец листа.
 - Так же нужно создать кнопку которая очищает лист любимых шуток.
 
-- Удели вниманию блокам в листе любимых шуток
-  https://www.figma.com/file/nYKrkNVMT4EdMIRV1idWGR/Chuck-Norris-WareFrame?node-id=0%3A1
-
 - Обязательные технические требования:
 - TypeScript
 - Styled Components
-- Библиотека для управления состоянием (redux, effector, mobx и т.п)
+- Библиотеки для управления состоянием (redux, effector, mobx и т.п)
+-
+- ![chucknorris_logo_coloured_small@2x](https://github.com/quakelele/chackie-joke/assets/154896596/800233bd-1cd2-4941-bd1f-49d3cf4f0532)
