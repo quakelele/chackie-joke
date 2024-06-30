@@ -19,7 +19,5 @@
 <br>
 <hr>
 <br>
-<h1>- cсылка на результат - https://chackie-joke.vercel.app/</h1>
-- ![Без имени](https://github.com/quakelele/chackie-joke/assets/154896596/dbb84126-242e-4a86-ab9b-86103784f876)
-
-
+<h3>- cсылка на результат - https://chackie-joke.vercel.app/</h3>
+(https://github.com/quakelele/chackie-joke/assets/154896596/a8325746-f8b8-4b47-b1dc-2b0a6f2980d0)
