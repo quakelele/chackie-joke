@@ -1,6 +1,5 @@
 # Тестовое на React.  Redux.  TS.  Styled components.  
 # Чак Норис челендж
-
 ## Это челендж который тебе предстоит пройти если ты хочешь вступить в наши ряды.
 
 Идея простая, но реализация отнюдь.
@@ -17,6 +16,10 @@
 - TypeScript
 - Styled Components
 - Библиотеки для управления состоянием (redux, effector, mobx и т.п)
+<br>
+<hr>
+<br>
+<h1>- cсылка на результат - https://chackie-joke.vercel.app/</h1>
 - ![Без имени](https://github.com/quakelele/chackie-joke/assets/154896596/dbb84126-242e-4a86-ab9b-86103784f876)
 
 
