@@ -3,11 +3,69 @@ import { Home } from '../Pages/Home'
 import { useLazyGetRandomJokeQuery, useGetRandomJokeQuery } from '../api'
 import styled, { keyframes } from 'styled-components'
 import './Layout.css'
-import { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { Button } from '@components/Button'
-import { JokeType } from 'api/_types'
 import chucknorris_logo from '@assets/chucknorris_logo.png'
+import { useInterval } from '../hooks/useInterval'
+import { useLocalStorage } from '../hooks/useLocalStorage'
+import { JokeType } from '../api/_types'
+
+export const Layout = () => {
+  const [fetchJoke] = useLazyGetRandomJokeQuery()
+  const [interval, setInterval] = useInterval(false, fetchJoke)
+  const { data: joke } = useGetRandomJokeQuery()
+  const [favorites, setFavorites] = useLocalStorage('[]', 'favorites')
+  const isJokeInFavorite = favorites.find((item: JokeType) => item.id === joke?.id)
+  const deleteFromFavorite = favorites.filter((item: JokeType) => item.id !== joke?.id)
+
+  const addAndDeleteHandler = () => {
+    if (joke) {
+      if (!isJokeInFavorite) {
+        setFavorites([...favorites, joke])
+        return
+      }
+      setFavorites(deleteFromFavorite)
+    }
+  }
+
+  const addToFavorites = () => {
+    fetchJoke()
+
+    if (joke) {
+      if (favorites.length <= 9) {
+        setFavorites([...favorites, joke])
+        return
+      }
+      setFavorites([...favorites.slice(1), joke])
+    }
+  }
+  return (
+    <Container>
+      <Image src={chucknorris_logo} alt="" />
+      <Inner>
+        <StyledLink to="/">
+          <Page>Home</Page>
+        </StyledLink>
+
+        <StyledLink to="favorites">
+          <Page>Favorites</Page>
+        </StyledLink>
+      </Inner>
+      <ButtonBlock>
+        <Button interval={interval} fetchJoke={fetchJoke} setInterval={setInterval} addToFavorites={addToFavorites} />
+      </ButtonBlock>
+      <Routes>
+        <Route
+          path="/favorites"
+          element={
+            <Favorites setFavorites={setFavorites} addAndDeleteHandler={addAndDeleteHandler} favorites={favorites} />
+          }
+        />
+        <Route path="/" element={<Home joke={joke} />} />
+      </Routes>
+    </Container>
+  )
+}
 
 const Container = styled.div`
   display: flex;
@@ -71,90 +129,3 @@ const StyledLink = styled(Link)`
     transition: 0.5s all ease;
   }
 `
-
-export const Layout = () => {
-  const [fetchJoke] = useLazyGetRandomJokeQuery()
-  const [intervalId, setIntervalId] = useState<number>()
-  const [isRunning, setIsRunning] = useState(false)
-  const { data: joke } = useGetRandomJokeQuery()
-  const Local: JokeType[] = JSON.parse(localStorage.getItem('favorites') || '[]')
-  const [favorites, setFavorites] = useState<JokeType[]>(Local)
-  const isJokeInFavorite = favorites.find(item => item.id === joke?.id)
-  const deleteFromFavorite = favorites.filter(item => item.id !== joke?.id)
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }, [favorites])
-
-  const addAndDeleteHandler = () => {
-    if (joke) {
-      if (!isJokeInFavorite) {
-        setFavorites([...favorites, joke])
-        return
-      }
-      setFavorites(deleteFromFavorite)
-    }
-  }
-
-  const startInterval = () => {
-    const ID = setInterval(() => {
-      fetchJoke()
-    }, 3000)
-    setIsRunning(true)
-    setIntervalId(ID)
-  }
-
-  const stopInterval = () => {
-    clearInterval(intervalId)
-    setIsRunning(false)
-  }
-
-  const intervalHandler = () => {
-    if (isRunning) {
-      stopInterval()
-      return
-    }
-    startInterval()
-  }
-
-  const addToFavorites = () => {
-    fetchJoke()
-    if (joke) {
-      if (favorites.length <= 9) {
-        setFavorites([...favorites, joke])
-        return
-      }
-      setFavorites([...favorites.slice(1), joke])
-    }
-  }
-  return (
-    <Container>
-      <Image src={chucknorris_logo} alt="" />
-      <Inner>
-        <StyledLink to="/">
-          <Page>Home</Page>
-        </StyledLink>
-
-        <StyledLink to="favorites">
-          <Page>Favorites</Page>
-        </StyledLink>
-      </Inner>
-      <ButtonBlock>
-        <Button
-          isRunning={isRunning}
-          fetchJoke={fetchJoke}
-          intervalHandler={intervalHandler}
-          addToFavorites={addToFavorites}
-        />
-      </ButtonBlock>
-      <Routes>
-        <Route
-          path="/favorites"
-          element={
-            <Favorites setFavorites={setFavorites} addAndDeleteHandler={addAndDeleteHandler} favorites={favorites} />
-          }
-        />
-        <Route path="/" element={<Home joke={joke} />} />
-      </Routes>
-    </Container>
-  )
-}
