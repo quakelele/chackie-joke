@@ -139,9 +139,12 @@ export const Layout = () => {
         </StyledLink>
       </Inner>
       <ButtonBlock>
-        <Button title={'Random joke'} addButton={fetchJoke} />
-        <Button isRunning={isRunning} title={'Joke with delay'} addButton={intervalHandler} />
-        <Button title={'Add to favorites'} addButton={addToFavorites} />
+        <Button
+          isRunning={isRunning}
+          fetchJoke={fetchJoke}
+          intervalHandler={intervalHandler}
+          addToFavorites={addToFavorites}
+        />
       </ButtonBlock>
       <Routes>
         <Route

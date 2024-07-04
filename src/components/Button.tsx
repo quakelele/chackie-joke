@@ -1,20 +1,19 @@
-// import styled from 'styled-components'
 import '../components/Button.css'
-// const Buttons = styled.button`
-
-// `
 
 type Props = {
-  title: string
-  addButton: (arg: void) => void
+  intervalHandler: (arg: void) => void
+  fetchJoke: (arg: void) => void
+  addToFavorites: (arg: void) => void
   isRunning?: boolean
 }
-export const Button = ({ title, addButton, isRunning }: Props) => {
+export const Button = ({ isRunning, fetchJoke, addToFavorites, intervalHandler }: Props) => {
   return (
     <>
-      <button className={isRunning ? 'greenColor' : 'grayColor'} onClick={() => addButton()}>
-        {title}
+      <button onClick={() => fetchJoke()}>Random joke</button>
+      <button onClick={() => intervalHandler()} className={isRunning ? 'greenColor' : 'grayColor'}>
+        Joke with delay
       </button>
+      <button onClick={() => addToFavorites()}>Add to favorites</button>
     </>
   )
 }
