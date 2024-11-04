@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 
-export const useInterval = (initialValue: boolean, fetchData: () => void) => {
+type UseIntervalReturn = [boolean, () => void];
+
+export const useInterval = (initialValue: boolean, fetchData: () => void):UseIntervalReturn => {
   const [value, setValue] = useState<boolean>(initialValue)
   const [intervalID, setIntervalID] = useState<number>()
   const toggle = () => {
