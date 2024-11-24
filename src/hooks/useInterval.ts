@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export const useInterval = (initialValue: boolean, fetchData: () => void): [boolean, toggle: () => void] => {
+export const useInterval = (initialValue: boolean, fetchData: () => void) => {
   const [value, setValue] = useState<boolean>(initialValue)
   const [intervalID, setIntervalID] = useState<number>()
   const toggle = () => {
