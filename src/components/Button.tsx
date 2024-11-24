@@ -10,7 +10,7 @@ export const Button = ({ interval, fetchJoke, addToFavorites, setInterval }: Pro
   return (
     <>
       <button onClick={() => fetchJoke()}>Random joke</button>
-      <button onClick={setInterval} className={interval ? 'greenColor' : 'grayColor'}>
+      <button onClick={() => setInterval()} className={interval ? 'greenColor' : 'grayColor'}>
         Joke with delay
       </button>
       <button onClick={() => addToFavorites()}>Add to favorites</button>
