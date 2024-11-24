@@ -14,13 +14,13 @@ const Container = styled.div`
     font-size: 10px;
     height: 30px;
     border: 0 solid gray;
-    background-color: #a15858;
+    background-color: #cb1717a2;
     color: white;
     border-radius: 10px;
     padding: 5px;
     transition: 0.2s all ease-in;
     &:hover {
-      background-color: #ff0000c0;
+      background-color: #b90b0baf;
       box-shadow: 0 3px 5px rgba(82, 82, 82, 0.4);
     }
   }
@@ -56,7 +56,7 @@ const List = styled.li`
     padding: 5px;
     transition: 0.2s all ease-in;
     &:hover {
-      background-color: #ff0000c0;
+      background-color: #ff00004e;
       box-shadow: 0 3px 5px rgba(82, 82, 82, 0.4);
     }
   }

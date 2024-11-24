@@ -3,8 +3,8 @@ import '../components/Button.css'
 type Props = {
   fetchJoke: () => void
   addToFavorites: () => void
-  interval: boolean
-  setInterval: () => void
+  interval: boolean 
+  setInterval:  () => void
 }
 export const Button = ({ interval, fetchJoke, addToFavorites, setInterval }: Props) => {
   return (

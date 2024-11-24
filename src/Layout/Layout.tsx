@@ -29,8 +29,6 @@ export const Layout = () => {
   }
 
   const addToFavorites = () => {
-    fetchJoke()
-
     if (joke) {
       if (favorites.length <= 9) {
         setFavorites([...favorites, joke])

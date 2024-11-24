@@ -6,8 +6,8 @@ type Props = {
 
 export const Home = ({ joke }: Props) => {
   return (
-    <div>
+    <>
       <Item joke={joke} />
-    </div>
+    </>
   )
 }
